@@ -9,7 +9,9 @@ module.exports = {
 
   attributes: {
 
-    login : { type: 'string' },
+    login : { type: 'string', 
+    unique : true
+   },
 
     password : { type: 'string' }
   }
