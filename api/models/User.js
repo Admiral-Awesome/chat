@@ -1,7 +1,7 @@
 /**
  * User.js
  *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @description :: user model to store
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
@@ -11,9 +11,7 @@ module.exports = {
 
     login : { type: 'string' },
 
-    logout : { type: 'string' },
-
-    signup : { type: 'string' }
+    password : { type: 'string' }
   }
 };
 
