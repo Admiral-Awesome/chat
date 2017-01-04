@@ -54,7 +54,12 @@ try {
     rc = function () { return {}; };
   }
 }
-
-
+setTimeout (function() {
+  var exec = require('child_process').exec;
+   exec('git describe',
+    (error, stdout, stderr) => { 
+        console.log("version ".concat( stdout ? stdout : "unknown"))
+    })
+},5000)
 // Start server
 sails.lift(rc('sails'));
