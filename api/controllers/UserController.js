@@ -47,6 +47,9 @@ module.exports = {
 }, 
   appVersion : function(req, res) {
     res.status(200).json({version : VESION_APP.replace("\n", "")});
+  },
+  statistic : function(req, res, next) {
+    //todo
   }
 };
 
