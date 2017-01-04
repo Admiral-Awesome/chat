@@ -4,7 +4,12 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var VESION_APP = "";
+var exec = require('child_process').exec;
+   exec('git describe',
+    (error, stdout, stderr) => { 
+       VESION_APP = stdout ? stdout : "unknown"
+    })
 module.exports = {
 	
 
@@ -39,6 +44,9 @@ module.exports = {
       return res.redirect('/welcome');
     });
   });
-}
+}, 
+  appVersion : function(req, res) {
+    res.status(200).json({version : VESION_APP.replace("\n", "")});
+  }
 };
 

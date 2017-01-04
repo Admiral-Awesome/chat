@@ -11,7 +11,7 @@ var exec = require('child_process').exec;
     		return;
     	}
     	var now = new Date();
-    	var ver = "v".concat(parseFloat(stdout.substr(1,stdout.indexOf("-")-1))+0.01).concat("-" + dateFormat(now, "d-mmm-yyyy.hh-MM-ss"));
+    	var ver = "v".concat((parseFloat(stdout.substr(1,stdout.indexOf("-")-1))+0.01).toFixed(2)).concat("-" + dateFormat(now, "d-mmm-yyyy.hh-MM-ss"));
     	 exec(`git tag -a ${ver} -m ${ver}`, function(err, out) {
     	 		if (!err) {
     	 			console.log("success")
