@@ -36,7 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
   "GET /version" : "UserController.appVersion",
-  "GET /*" : "UserController.statistic"
-
-
+  "POST /login" : "UserController.login",
+  "POST /logout" : "UserController.logout",
+  "POST /status" : "UserController.status"
 };

@@ -18,33 +18,33 @@ module.exports = {
    * `UserController.login()`
    */
  login: function (req, res) {
-  return res.login({
-    successRedirect: '/'
-  });
+  User.find(req.body).exec(function(err, data) {
+    if (data && data.length > 0) {
+      req.session.authenticated = true;
+      return res.ok({msg  : 'Logged in successfully'})
+    }
+    return res.status(400).json({msg : "wrong login or password"});
+  })
 },
 
-
+  /**
+  * status authentification
+  */
+  status : function(req, res) {
+    if ( ! req.session.authenticated)
+       req.session.authenticated = false
+    return res.status(200).json({status :  req.session.authenticated})
+  },
   /**
    * `UserController.logout()`
    */
   logout: function (req, res) {
-  req.logout();
-  return res.ok('Logged out successfully.');
+  req.session.authenticated = false;
+  return res.json({msg : "logged out"})
 },
 
 
-  /**
-   * `UserController.signup()`
-   */
-  signup: function (req, res) {
-  User.create(req.params.all()).exec(function (err, user) {
-    if (err) return res.negotiate(err);
-    req.login(user, function (err){
-      if (err) return res.negotiate(err);
-      return res.redirect('/welcome');
-    });
-  });
-}, 
+   
   appVersion : function(req, res) {
     res.status(200).json({version : VESION_APP.replace("\n", "")});
   },
