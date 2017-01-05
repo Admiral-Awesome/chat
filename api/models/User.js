@@ -14,6 +14,8 @@ module.exports = {
    },
 
     password : { type: 'string' }
-  }
+  },
+  name : { type : 'string'},
+  surname : { type : 'string'}
 };
 
