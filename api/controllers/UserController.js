@@ -18,6 +18,7 @@ module.exports = {
    * `UserController.login()`
    */
  login: function (req, res) {
+   res.setHeader("Access-Control-Allow-Origin", "*");
   User.find(req.body).exec(function(err, data) {
     if (data && data.length > 0) {
       var userData = req.body;
@@ -34,6 +35,7 @@ module.exports = {
   * status authentification
   */
   status : function(req, res) {
+     res.setHeader("Access-Control-Allow-Origin", "*");
     if ( ! req.session.authenticated)
        req.session.authenticated = {authenticated : false};
     return res.status(200).json({status :  req.session.authenticated})
@@ -42,6 +44,7 @@ module.exports = {
    * `UserController.logout()`
    */
   logout: function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   req.session.authenticated = {authenticated : false}
   return res.json({msg : "logged out"})
 },
@@ -49,6 +52,8 @@ module.exports = {
 
    
   appVersion : function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     res.status(200).json({version : VESION_APP.replace("\n", "")});
   },
   statistic : function(req, res, next) {
