@@ -20,7 +20,10 @@ module.exports = {
  login: function (req, res) {
   User.find(req.body).exec(function(err, data) {
     if (data && data.length > 0) {
-      req.session.authenticated = true;
+      var userData = req.body;
+      delete userData.password;
+      userData.authenticated = true;
+      req.session.authenticated = userData;
       return res.ok({msg  : 'Logged in successfully'})
     }
     return res.status(400).json({msg : "wrong login or password"});
@@ -32,14 +35,14 @@ module.exports = {
   */
   status : function(req, res) {
     if ( ! req.session.authenticated)
-       req.session.authenticated = false
+       req.session.authenticated = {authenticated : false};
     return res.status(200).json({status :  req.session.authenticated})
   },
   /**
    * `UserController.logout()`
    */
   logout: function (req, res) {
-  req.session.authenticated = false;
+  req.session.authenticated = {authenticated : false}
   return res.json({msg : "logged out"})
 },
 
