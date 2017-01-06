@@ -1,7 +1,9 @@
 var app = angular.module('Chat', ['ui.router']);
 
-
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.withCredentials = true;
+}])
+.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/home');
     

@@ -1,6 +1,6 @@
 var app = angular.module('Chat');
 
-app.factory('Version', ['$http',function($http) {
+app.service('Version', ['$http',function($http) {
 
 	return {
 		_set : function($scope) {
@@ -12,3 +12,19 @@ app.factory('Version', ['$http',function($http) {
 		}
 	}
 }])
+.service('AuthService',  ['$http',function($http) {
+	var status = false;
+	var authData = {};
+
+	return {
+		_set : function( $scope ) {
+			$http.post(HOST_CONST + ":" + PORT_CONST+ "/status", {withCredentials: true}).then(function(resp) {
+				
+				console.log(resp)
+			})
+		},
+		_get: function() {
+
+		} 
+	}
+}]);
