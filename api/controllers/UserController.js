@@ -27,10 +27,12 @@ res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Over
 
   User.find(req.body).exec(function(err, data) {
     if (data && data.length > 0) {
-      var userData = req.body;
-      delete userData.password;
-      userData.authenticated = true;
-      req.session.authenticated = userData;
+      // var userData = req.body;
+      // delete userData.password;
+      // userData.authenticated = true;
+      req.session.authenticated = data[0];
+      delete req.session.authenticated.password;
+       req.session.authenticated.authenticated = true;
       return res.ok({msg  : 'Logged in successfully',res : req.session.authenticated})
     }
     return res.status(400).json({msg : "wrong login or password"});
