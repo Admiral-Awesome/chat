@@ -1,1 +1,11 @@
-test
+<div>
+	<form ng-submit="registeration()"> 
+	<p> Name <input type="text"  required ng-model="register.name" ngMinlength="4">
+	<p> Surname <input type="text" name="surname" required ng-model="register.surname" ngMinlength="4">
+	<p> Login <input type="text" name="login" required ng-model="register.login" ngMinlength="4"></p>
+	<p> Password <input type="password" name="pass" required ng-model="register.password" ngMinlength="4"></p>
+	<input type="submit" name="register" value="register" >
+	</form>
+	<br>
+	<h2 ng-show="showSuccess==true" style="color : green"> Successfully created, redirecting ...</h2>
+</div>
