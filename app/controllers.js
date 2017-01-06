@@ -31,20 +31,33 @@ app.controller('homeController', function($scope,Version,AuthService) {
 .controller('chatController', function($scope) {
 
 })
-.controller('loginController', function($scope, $http,$timeout,$state) {
+.controller('loginController', function(AuthService,$scope, $http,$timeout,$state) {
 	$scope.loginData = {
 		login : "",
 		password : ""
 	}
 	$scope.err = ""
-	$scope.showSuccess = false;
+	$scope.loggedIn = false;
+	$scope.validate = function() {
+		var checkSession = AuthService._get();
+		console.log(checkSession.credits.authentificated)
+		if ( AuthService.checkAuth() == true ) {
+			console.log("test")
+			$scope.loggedIn = true;
+			$timeout (function() {
+				$scope.loggedIn = false;
+				$state.go("chat");
+			},3000)
+		}
+	}
+	$scope.validate();
 	$scope.login = function() {
 		$http.post(HOST_CONST + ":" + PORT_CONST+ "/login", $scope.loginData).then(function(resp) {
 			console.log(resp)
 			$scope.showSuccess = true;
 			$timeout (function() {
 				$scope.showSuccess = false;
-				$state.go("home")
+				$state.go("chat")
 			},3000)
 		}, function(err) {
 			
