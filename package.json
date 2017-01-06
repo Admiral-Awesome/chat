@@ -23,6 +23,7 @@
     "rc": "1.0.1",
     "sails": "~0.12.11",
     "sails-disk": "~0.10.9",
+    "sails-mongo": "^0.12.2",
     "sails.io.js": "^1.1.4",
     "socket.io": "^1.7.2"
   },
