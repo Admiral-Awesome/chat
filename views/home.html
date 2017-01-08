@@ -4,6 +4,7 @@
 		<li><a ng-href="#!/registration">Регистрация </a></li>
 		<li><a ng-href="#!/login">Вход в чат</a></li>
 		<li><a>Статистика </a></li>
+		<li ng-show="validateLoggedIn()" ng-click="logout()"><a>Выйти </a></li>
 	</ul>
 <div>
 

@@ -1,0 +1,25 @@
+<div> 
+<form ng-submit="send()">
+<input type="text" name="chatMsg" ng-model="msgData.text">
+<input type="submit" name="" value="Send">
+</form>
+</div>
+<div>
+ 	<ul>
+        <li ng-repeat="item in msg | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+        	<h3> {{item.author}} </h3>
+        	<i> {{item.createdAt | date :  "dd.MM.y  H:mm"}}</i>
+        	<br>
+        	<br>
+            <b>{{item.text}}</b>
+        </li>
+    </ul>
+    <p>
+    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= msg.length/pageSize - 1" ng-click="currentPage=currentPage+1">Next
+    </button>
+    </p>
+</div>

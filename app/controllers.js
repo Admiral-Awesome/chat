@@ -1,10 +1,15 @@
 var app = angular.module('Chat');
 
-//to do 
-//realization of controllers
+
 app.controller('homeController', function($scope,Version,AuthService) {
 	Version._set($scope);
 	AuthService._set($scope);
+	$scope.validateLoggedIn = function() {
+		return AuthService.checkAuth();
+	}
+	$scope.logout = function() {
+		AuthService.logout();
+	}
 })
 .controller('registrationController', function($state,$scope, $http,$timeout) {
 	$scope.register = { 
@@ -28,8 +33,27 @@ app.controller('homeController', function($scope,Version,AuthService) {
 		})
 	}
 })
-.controller('chatController', function($scope) {
-
+.controller('chatController', function(AuthService,$scope, Chat,$timeout) {
+	$scope.currentPage = 0;
+    $scope.pageSize = 10;
+    $scope.msg = [];
+    $scope.msgData = { text : '', author : AuthService._get().credits.name + " "  + AuthService._get().credits.surname+ " "};
+    Chat._getMessages($scope);
+    $scope.numberOfPages=function(){
+        return Math.ceil($scope.msg.length/$scope.pageSize);                
+    }
+    $scope.send = function() {
+    	 $scope.msgData.author = AuthService._get().credits.name + " "  + AuthService._get().credits.surname+ " ";
+    	Chat._sendMessage($scope.msgData);
+    }
+     socket = io(HOST_CONST+':8000');
+    socket.on('connect', function(){
+  			socket.on("newMsg",function(data) {
+  				 $timeout(function() {
+  				 	$scope.msg.unshift(data)
+  				 },0);
+  			})
+  	});
 })
 .controller('loginController', function(AuthService,$scope, $http,$timeout,$state) {
 	$scope.loginData = {
@@ -50,15 +74,17 @@ app.controller('homeController', function($scope,Version,AuthService) {
 			},3000)
 		}
 	}
+
 	$scope.validate();
 	$scope.login = function() {
 		$http.post(HOST_CONST + ":" + PORT_CONST+ "/login", $scope.loginData).then(function(resp) {
-			console.log(resp)
+			// console.log(resp)
+			AuthService._set($scope);
 			$scope.showSuccess = true;
 			$timeout (function() {
 				$scope.showSuccess = false;
 				$state.go("chat")
-			},3000)
+			},2000)
 		}, function(err) {
 			
 			$scope.err = err.data.msg;

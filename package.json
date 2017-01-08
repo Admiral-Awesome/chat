@@ -1,0 +1,23 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "mean chat Unicorn rainbow",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Admiral-Awesome/chat.git"
+  },
+  "author": "Unicorn Rainbowі",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Admiral-Awesome/chat/issues"
+  },
+  "homepage": "https://github.com/Admiral-Awesome/chat#readme",
+  "dependencies": {
+    "static-server": "^2.0.3"
+  }
+}
