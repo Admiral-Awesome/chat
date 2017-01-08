@@ -7,12 +7,15 @@
 var io =require('socket.io')(8000);
 io.on('connection', function(socket){
 	
-	socket.on('msg', function(id, msg) {
-		console.log(msg);
+	socket.on('msg', function(msg) {
+		Messages.create(msg).exec(function(err, resp) {
+
+			socket.emit('newMsg',resp)
+		})
+		
 	});
-  console.log("connected");
+
   socket.on('disconnect', function(){
-  console.log("disconnected")
    });
 });
 module.exports = {
