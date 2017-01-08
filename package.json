@@ -20,7 +20,9 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
+    "jasmine": "^2.5.2",
     "rc": "1.0.1",
+    "request": "^2.79.0",
     "sails": "~0.12.11",
     "sails-disk": "~0.10.9",
     "sails-mongo": "^0.12.2",
@@ -37,5 +39,8 @@
     "url": "git://github.com/prosperity/chat.git"
   },
   "author": "prosperity",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "jasmine": "^2.5.2"
+  }
 }
