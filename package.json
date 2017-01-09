@@ -1,8 +1,8 @@
 {
   "name": "chat",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "1.0.0",
+  "description": "Чат на сокетах",
   "keywords": [],
   "dependencies": {
     "dateformat": "^2.0.0",
@@ -39,9 +39,9 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/prosperity/chat.git"
+    "url": "git://github.com/Admiral-Awesome/chat.git"
   },
-  "author": "prosperity",
+  "author": "Unicorn Rainbow",
   "license": "MIT",
   "devDependencies": {
     "grunt-contrib-jshint": "^1.1.0",
