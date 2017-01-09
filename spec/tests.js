@@ -34,7 +34,7 @@ var mock = require('mock-require');
 
 var request1 = {};
 mock('request1', { get: function() {
-  console.log("mocked")
+  	console.log("mocked")
 }}); 
 request1.get = function() {
 	return { response : { statusCode : 200}}
