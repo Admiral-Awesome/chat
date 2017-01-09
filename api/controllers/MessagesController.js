@@ -10,13 +10,12 @@ io.on('connection', function(socket){
 	socket.on('msg', function(msg) {
 		Messages.create(msg).exec(function(err, resp) {
 
-			socket.emit('newMsg',resp)
+			io.emit('newMsg',resp)
 		})
 		
 	});
-
   socket.on('disconnect', function(){
-  	
+  		
    });
 });
 module.exports = {
