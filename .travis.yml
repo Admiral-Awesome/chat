@@ -1,9 +1,7 @@
 language: node_js
 node_js:
     - "6"
-before_script:
-    - "node app --prod"
-"scripts": {
-  "test": "jasmine"
-}
+script:
+  - node app.js --prod &
+  - npm test
 services: mongodb
