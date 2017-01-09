@@ -1,3 +1,4 @@
+
 var request = require("request");
 
 var base_url = "http://localhost:1337/";
@@ -17,7 +18,7 @@ describe("Hello World Server", function() {
 //papusha 
 
 describe("user test", function() {
-  describe("GET /", function() {
+  describe("returns user count", function() {
     it("returns user count", function(done) {
       request.get(base_url+"user", function(error, response, body) {
       	
@@ -28,3 +29,26 @@ describe("user test", function() {
     });
   });
 });
+
+var mock = require('mock-require');
+
+var request1 = {};
+mock('request1', { get: function() {
+  console.log("mocked")
+}}); 
+request1.get = function() {
+	return { response : { statusCode : 200}}
+};
+//mocks test front server response
+
+describe("returns fake status server", function() {
+    it("returns fake status server", function(done) {
+      var c = request1.get("http://localhost:8080")
+      	// console.log(c)
+      	expect(c.response.statusCode).toBe(200);
+
+        done();
+      // });
+    });
+  });
+
