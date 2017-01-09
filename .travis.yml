@@ -6,3 +6,4 @@ before_script:
 "scripts": {
   "test": "jasmine"
 }
+services: mongodb
