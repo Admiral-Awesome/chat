@@ -18,10 +18,10 @@ describe("Hello World Server", function() {
 
 describe("user test", function() {
   describe("GET /", function() {
-    it("returns status code 200", function(done) {
+    it("returns user count", function(done) {
       request.get(base_url+"user", function(error, response, body) {
       	
-      	expect(JSON.parse(body).length).toBe(1);
+      	expect(JSON.parse(body).length).toBe(0);
 
         done();
       });
