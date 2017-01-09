@@ -29,7 +29,19 @@ describe("user test", function() {
     });
   });
 });
+//vlad kpi
+describe("messages test", function() {
+  describe("returns messages count", function() {
+    it("msg count", function(done) {
+      request.get(base_url+"/messages", function(error, response, body) {
+      	
+      	expect(JSON.parse(body).length).toBe(0);
 
+        done();
+      });
+    });
+  });
+})
 var mock = require('mock-require');
 
 var request1 = {};
