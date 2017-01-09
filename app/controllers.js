@@ -43,8 +43,10 @@ app.controller('homeController', function($scope,Version,AuthService) {
         return Math.ceil($scope.msg.length/$scope.pageSize);                
     }
     $scope.send = function() {
+
     	 $scope.msgData.author = AuthService._get().credits.name + " "  + AuthService._get().credits.surname+ " ";
     	Chat._sendMessage($scope.msgData);
+    	$scope.msgData.text = '';
     }
      socket = io(HOST_CONST+':8000');
     socket.on('connect', function(){
