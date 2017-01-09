@@ -30,7 +30,7 @@
     "socket.io": "^1.7.2"
   },
   "scripts": {
-    "test": "node app.js && jasmine",
+    "test": "node app.js --prod && jasmine",
     "debug": "node debug app.js",
     "start": "node app.js"
   },
