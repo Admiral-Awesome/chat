@@ -6,7 +6,7 @@
 </div>
 <div>
  	<ul>
-        <li ng-repeat="item in msg | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+        <li ng-repeat="item in msg | startFrom:currentPage*pageSize | limitTo:pageSize track by $index" class="message">
         	<h3> {{item.author}} </h3>
         	<i> {{item.createdAt | date :  "dd.MM.y  H:mm"}}</i>
         	<br>
