@@ -2,6 +2,5 @@ language: node_js
 node_js:
     - "6"
 script:
-  - node app.js --prod
   - npm test
 services: mongodb

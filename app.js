@@ -63,4 +63,15 @@ setTimeout (function() {
     })
 },5000)
 // Start server
+if (process.env.isTest == 'true') {
+  console.log("+++++strating tests+++++++")
+  setTimeout (function() {
+  var exec = require('child_process').exec;
+   exec('jasmine',
+    (error, stdout, stderr) => { 
+       console.log(stdout)
+       process.exit(0);
+    })
+},5000)
+}
 sails.lift(rc('sails'));
