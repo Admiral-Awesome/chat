@@ -70,9 +70,14 @@ if (process.env.isTest == 'true') {
    exec('jasmine',
     (error, stdout, stderr) => { 
        console.log(stdout)
-    if ( stdout.indexOf("Failures") == -1)
+    if ( stdout.indexOf("Failures") == -1) {
+      console.log("no Failures")
        process.exit(0);
-     process.exit(1)
+    } else {
+        console.log("FAILLL!!!1111!1")
+        process.exit(1)
+
+    }
     })
 },5000)
 }
