@@ -1,17 +1,15 @@
 <div> 
 <form ng-submit="send()">
-<input type="text" name="chatMsg" ng-model="msgData.text">
-<input type="submit" name="" value="Send">
+<input type="text" name="chatMsg" ng-model="msgData.text" class="msg-input">
+<input type="submit" name="" value="Send" class="msg-btn">
 </form>
 </div>
 <div>
- 	<ul>
+ 	<ul class="message-list">
         <li ng-repeat="item in msg | startFrom:currentPage*pageSize | limitTo:pageSize track by $index" class="message">
-        	<h3> {{item.author}} </h3>
-        	<i> {{item.createdAt | date :  "dd.MM.y  H:mm"}}</i>
-        	<br>
-        	<br>
-            <b>{{item.text}}</b>
+        	<h4 class="msg-author"> {{item.author}} </h4>
+        	<i class="msg-date"> {{item.createdAt | date :  "dd.MM.y  H:mm"}}</i>
+            <b class="msg-text">{{item.text}}</b>
         </li>
     </ul>
     <p>
