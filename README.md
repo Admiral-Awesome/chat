@@ -1,4 +1,4 @@
-# chat.lab3
+# chat.lab3 (Lab 4 ниже)
 
 ## Task1
 
@@ -38,3 +38,26 @@ npm i<br />
 запуск тестов npm test<br />
 в истории коммитов есть успешные и не успшение сборки на тревисе<br />
 запуск примера jshint - grunt jshint<br />
+
+
+# chat.Lab4 <br />
+
+##task 1,2 <br />
+
+докер полностью собирает всю среду окружения так же запускает доп сервисы как например монго, без которой сервер не поднимется <br />
+
+для упрощения были сделанны комманды запуска (полные комманды доступны в package.json) <br />
+
+команды : <br />
+
+buld & run "npm run docker" <br />
+run - "npm run docker-run"<br />
+build - "npm run docker-build"<br />
+test - "npm run docker-test"<br />
+
+##task 3 
+
+пример сборки докер теста на тревисе коммит "docker travis"<br />
+запущен с помощью комманды npm run docker-test <br />
+файл докера Dockertest<br />
+
