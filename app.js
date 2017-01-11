@@ -72,10 +72,15 @@ if (process.env.isTest == 'true') {
        console.log(stdout)
     if ( stdout.indexOf("Failures") == -1) {
       console.log("no Failures")
-       process.exit(0);
+      setTimeout(function() {
+        process.exit(0); 
+      },2000)
+       
     } else {
         console.log("FAILLL!!!1111!1")
-        process.exit(1)
+        setTimeout(function() {
+        process.exit(1); 
+      },2000)
 
     }
     })

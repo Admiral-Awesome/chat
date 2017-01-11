@@ -33,7 +33,8 @@ describe("user test", function() {
 describe("messages test", function() {
   describe("returns messages count", function() {
     it("msg count", function(done) {
-      request.get(base_url+"/messages", function(error, response, body) {
+      request.get(base_url+"messages", function(error, response, body) {
+      	
       	
       	expect(JSON.parse(body).length).toBe(0);
 
@@ -42,12 +43,9 @@ describe("messages test", function() {
     });
   });
 })
-var mock = require('mock-require');
 
 var request1 = {};
-mock('request1', { get: function() {
-  	console.log("mocked")
-}}); 
+
 request1.get = function() {
 	return { response : { statusCode : 200}}
 };
