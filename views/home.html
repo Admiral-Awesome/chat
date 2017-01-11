@@ -1,12 +1,10 @@
 <h2 ng-show="credits.authenticated == true" class="title"> Hi, {{credits.name + " " + credits.surname + " !"}}</h2>
-<div class="version">
-	app version : {{version}}
-</div>
+
 <div class="main-menu">
 	<ul class='menu list'> 
 		<li><a ng-href="#!/registration" class="sign-up">Регистрация </a></li>
 		<li><a ng-href="#!/login" class="sign-in">Вход в чат</a></li>
-		<li><a>Статистика </a></li>
+
 		<li ng-show="validateLoggedIn()" ng-click="logout()"><a class="logout">Выйти </a></li>
 	</ul>
 <div>
@@ -17,4 +15,7 @@
 <p>Papusha Alexander - <b><i>PapikAlexander</i></b></p>
 <p>Belyokhin Vladyslav - <b><i>Vlad-kpi</i></b></p>
 <p>Chikivchuk Vladislav - <b><i>chykan</i></b></p>
+<div class="version">
+	app version : {{version}}
+</div>
 </div>
