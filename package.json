@@ -35,7 +35,12 @@
     "test": "isTest='true' node app --prod",
     "debug": "node debug app.js",
     "start": "node app.js",
-    "docker" : "sudo docker build -t='start' . && sudo docker run -t start"
+    "docker" : "sudo docker build -t='start' . && sudo docker run -t start",
+    "docker-run" : "sudo docker run -t start",
+    "docker-build" : "sudo docker build -t='start' ",
+    "docker-test" : "sudo docker build -t='test' -f Dockertest . && sudo docker run -t test"
+   
+  
   },
   "main": "app.js",
   "repository": {

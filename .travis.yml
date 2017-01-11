@@ -1,6 +1,9 @@
+sudo: required
 language: node_js
 node_js:
     - "6"
 script:
-  - npm test
-services: mongodb
+  - npm run docker-test
+services:
+- mongodb
+- docker
